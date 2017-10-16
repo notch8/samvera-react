@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "^3.0.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "coffeescript": "1.12.7",
+    "react": "^16.0.0",
+    "react-autocomplete": "^1.7.2",
+    "react-dom": "^16.0.0",
+    "webpacker-react": "^0.3.2"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.2"
+  }
+}

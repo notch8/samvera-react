@@ -14,6 +14,7 @@ gem 'rails', '~> 5.0.1'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
+gem 'webpacker', '~> 3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,3 +44,4 @@ group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
 end
+gem 'webpacker-react', '~> 0.3.2'
