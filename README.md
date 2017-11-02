@@ -7,35 +7,29 @@
   - React based autocomplete (type ahead) for search input
 
 ## Use React with Rails
-### install webpacker
+### install webpacker and webpacker-react
 ```
-$ rails new hydra-packer --webpack
-
-OR
-
 $ echo "gem 'webpacker', '~> 3.0'" >> Gemfile
+$ echo "gem 'webpacker-react', '~> 0.3.2' >> Gemfile
 
 THEN
 
-$ bundle exec rails webpacker:install
+$ bundle && bundle exec rails webpacker:install webpacker:install:react
 ```
 
 ### install webpacker-react gem
 ```
-$ echo "gem 'webpacker-react', '~> 0.3.2' >> Gemfile
-$ ./bin/yarn add webpacker-react react react-dom babel-preset-react babel-preset-stage-0
+
+$ ./bin/yarn add webpacker-react
 ```
 
-### Update .babelrc presets
-  * "env" and "stage-0"
 
-### Copy over layouts and views
+### Copy over view for editing
 ```
-$ cp /Users/mclark/.rvm/gems/ruby-2.3.0/gems/blacklight-6.7.3/app/views/layouts/blacklight.html.erb app/views/layouts
 $ cp /Users/mclark/.rvm/gems/ruby-2.3.0/gems/blacklight-6.7.3/app/views/catalog app/views/
 ```
 
-### Create a Catalog Component
+### Create a Search Component
 #### app/javascript/components/search/index.js
 ```javascript
 import React from 'react'
@@ -57,8 +51,13 @@ import WebpackerReact from 'webpacker-react'
 WebpackerReact.setup({Search})
 ```
 
-### Add component to _search_form.html.erb
+### Add pack and component to _search_form.html.erb
 ```html
+<!-- Add the pack to the document head -->
+<% content_for :head do %>
+  <%= javascript_pack_tag 'search' %>
+<% end %>
+  
 <%= form_tag search_action_url, method: :get, class: 'search-query-form clearfix navbar-form', role: 'search' do %>
   <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8)) %>
   <div class="input-group">
@@ -85,11 +84,6 @@ WebpackerReact.setup({Search})
   </div>
 <% end %>
 ````
-
-### So you want hot reloading?
-```
-$ ./bin/webpack-dev-server
-```
 
 ## Autocomplete
 
@@ -129,7 +123,7 @@ export default class Search extends Component {
           id: "q",
           type: 'text',
           placeholder: this.props.placeholder,
-          class: "search_q q form-control"
+          className: "search_q q form-control"
         }}
         items={this.state.autocompleteOptions}
         value={this.state.value}
