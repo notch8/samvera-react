@@ -10,7 +10,7 @@
 ### install webpacker and webpacker-react
 ```
 $ echo "gem 'webpacker', '~> 3.0'" >> Gemfile
-$ echo "gem 'webpacker-react', '~> 0.3.2' >> Gemfile
+$ echo "gem 'webpacker-react', '~> 0.3.2'" >> Gemfile
 
 THEN
 
@@ -23,11 +23,6 @@ $ bundle && bundle exec rails webpacker:install webpacker:install:react
 $ ./bin/yarn add webpacker-react
 ```
 
-
-### Copy over view for editing
-```
-$ cp /Users/mclark/.rvm/gems/ruby-2.3.0/gems/blacklight-6.7.3/app/views/catalog app/views/
-```
 
 ### Create a Search Component
 #### app/javascript/components/search/index.js
@@ -51,7 +46,7 @@ import WebpackerReact from 'webpacker-react'
 WebpackerReact.setup({Search})
 ```
 
-### Add pack and component to _search_form.html.erb
+### Add pack and component to app/views/catalog/_search_form.html.erb
 ```html
 <!-- Add the pack to the document head -->
 <% content_for :head do %>
