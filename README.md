@@ -14,7 +14,9 @@ $ echo "gem 'webpacker-react', '~> 0.3.2'" >> Gemfile
 
 THEN
 
-$ bundle && bundle exec rails webpacker:install webpacker:install:react
+$ bundle && bundle exec rails webpacker:install 
+
+$ bundle exec rails webpacker:install:react
 ```
 
 ### install webpacker-react gem
